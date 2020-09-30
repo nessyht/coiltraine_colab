@@ -98,12 +98,14 @@ class CoILDataset(Dataset):
 
         """
         try:
+            print("Trying to find img path") 
             img_path = os.path.join(self.root_dir,
                                     self.sensor_data_names[index].split('/')[-2],
                                     self.sensor_data_names[index].split('/')[-1])
 
             img = cv2.imread(img_path, cv2.IMREAD_COLOR)
             # Apply the image transformation
+            print("Read img")
             if self.transform is not None:
                 boost = 1
                 img = self.transform(self.batch_read_number * boost, img)
@@ -118,7 +120,7 @@ class CoILDataset(Dataset):
             for k, v in measurements.items():
                 v = torch.from_numpy(np.asarray([v, ]))
                 measurements[k] = v.float()
-            print("success")
+
             measurements['rgb'] = img
 
             self.batch_read_number += 1
