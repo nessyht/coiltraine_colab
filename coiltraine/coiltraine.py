@@ -38,12 +38,6 @@ if __name__ == '__main__':
         default=[]
     )
     argparser.add_argument(
-        '--output-folder',
-        dest='output_folder',
-        type=str,
-        default='_logs'
-    )
-    argparser.add_argument(
         '--no-train',
         dest='is_training',
         action='store_false'
@@ -153,7 +147,7 @@ if __name__ == '__main__':
 
         if args.single_process == 'train':
             execute_train(gpu="0", exp_batch=args.folder, exp_alias=args.exp,
-                          suppress_output=False, number_of_workers= args.number_of_workers, output_folder=args.output.folder)
+                          suppress_output=False, number_of_workers= args.number_of_workers)
 
         elif args.single_process == 'validation':
             execute_validation(gpu="0", exp_batch=args.folder, exp_alias=args.exp,

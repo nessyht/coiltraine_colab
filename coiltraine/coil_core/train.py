@@ -15,7 +15,7 @@ from coilutils.checkpoint_schedule import is_ready_to_save, get_latest_saved_che
 
 
 # The main function maybe we could call it with a default name
-def execute(gpu, exp_batch, exp_alias, suppress_output=True, number_of_workers=12, output_folder="_logs"):
+def execute(gpu, exp_batch, exp_alias, suppress_output=True, number_of_workers=12):
     """
         The main training function. This functions loads the latest checkpoint
         for a given, exp_batch (folder) and exp_alias (experiment configuration).
@@ -61,7 +61,7 @@ def execute(gpu, exp_batch, exp_alias, suppress_output=True, number_of_workers=1
 
         # Preload option
         if g_conf.PRELOAD_MODEL_ALIAS is not None:
-            checkpoint = torch.load(os.path.join(output_folder, g_conf.PRELOAD_MODEL_BATCH,
+            checkpoint = torch.load(os.path.join('_logs', g_conf.PRELOAD_MODEL_BATCH,
                                                   g_conf.PRELOAD_MODEL_ALIAS,
                                                  'checkpoints',
                                                  str(g_conf.PRELOAD_MODEL_CHECKPOINT)+'.pth'))
@@ -70,7 +70,7 @@ def execute(gpu, exp_batch, exp_alias, suppress_output=True, number_of_workers=1
         # returns none if there are no checkpoints saved for this model
         checkpoint_file = get_latest_saved_checkpoint()
         if checkpoint_file is not None:
-            checkpoint = torch.load(os.path.join(output_folder, exp_batch, exp_alias,
+            checkpoint = torch.load(os.path.join('_logs', exp_batch, exp_alias,
                                     'checkpoints', str(get_latest_saved_checkpoint())))
             iteration = checkpoint['iteration']
             best_loss = checkpoint['best_loss']
@@ -167,7 +167,7 @@ def execute(gpu, exp_batch, exp_alias, suppress_output=True, number_of_workers=1
                     'optimizer': optimizer.state_dict(),
                     'best_loss_iter': best_loss_iter
                 }
-                torch.save(state, os.path.join(output_folder, exp_batch, exp_alias
+                torch.save(state, os.path.join('_logs', exp_batch, exp_alias
                                                , 'checkpoints', str(iteration) + '.pth'))
 
             """
