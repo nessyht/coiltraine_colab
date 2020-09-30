@@ -104,13 +104,13 @@ class CoILDataset(Dataset):
 
             img = cv2.imread(img_path, cv2.IMREAD_COLOR)
             # Apply the image transformation
-            print("Read img from", img.shape)
+            print("Read img from", img_path)
             if self.transform is not None:
                 boost = 1
                 img = self.transform(self.batch_read_number * boost, img)
             else:
                 img = img.transpose(2, 0, 1)
-            print("transformed img")
+            print("transformed img", img.shape)
             img = img.astype(np.float)
             print("img as float")
             img = torch.from_numpy(img).type(torch.FloatTensor)
