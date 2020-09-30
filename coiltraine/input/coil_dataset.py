@@ -118,7 +118,7 @@ class CoILDataset(Dataset):
             for k, v in measurements.items():
                 v = torch.from_numpy(np.asarray([v, ]))
                 measurements[k] = v.float()
-
+            print("success")
             measurements['rgb'] = img
 
             self.batch_read_number += 1
@@ -132,7 +132,7 @@ class CoILDataset(Dataset):
             measurements['steer'] = 0.0
             measurements['throttle'] = 0.0
             measurements['brake'] = 0.0
-            measurements['rgb'] = np.zeros(3, 88, 200)
+            measurements['rgb'] = np.zeros(3, 300, 200)
 
         return measurements
 
