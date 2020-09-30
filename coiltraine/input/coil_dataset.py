@@ -110,11 +110,11 @@ class CoILDataset(Dataset):
                 img = self.transform(self.batch_read_number * boost, img)
             else:
                 img = img.transpose(2, 0, 1)
-            print("transformed img", img.values)
+            print("transformed img")
             img = img.astype(np.float)
             img = torch.from_numpy(img).type(torch.FloatTensor)
             img = img / 255.
-
+            print(img.shape)
             measurements = self.measurements[index].copy()
             print(measurements)
             for k, v in measurements.items():
