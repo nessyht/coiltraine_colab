@@ -104,6 +104,7 @@ class CoILDataset(Dataset):
                                     self.sensor_data_names[index].split('/')[-1])
 
             img = cv2.imread(img_path, cv2.IMREAD_COLOR)
+            cv2.imshow("img", img)
             # Apply the image transformation
             print("Read img")
             if self.transform is not None:
