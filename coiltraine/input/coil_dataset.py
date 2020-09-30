@@ -59,7 +59,7 @@ class CoILDataset(Dataset):
         # We add to the preload name all the remove labels
         if g_conf.REMOVE is not None and g_conf.REMOVE is not "None":
             name, self._remove_params = parse_remove_configuration(g_conf.REMOVE)
-            self.preload_name = preload_name + '_' + name
+            self.preload_name = None #preload_name + '_' + name
             self._check_remove_function = getattr(splitter, name)
         else:
             self._check_remove_function = lambda _, __: False
