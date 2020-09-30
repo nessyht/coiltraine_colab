@@ -112,7 +112,9 @@ class CoILDataset(Dataset):
                 img = img.transpose(2, 0, 1)
             print("transformed img")
             img = img.astype(np.float)
+            print("img as float")
             img = torch.from_numpy(img).type(torch.FloatTensor)
+            print("img to torch")
             img = img / 255.
             print(img.shape)
             measurements = self.measurements[index].copy()
