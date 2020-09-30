@@ -134,7 +134,7 @@ class CoILDataset(Dataset):
             measurements['steer'] = 0.0
             measurements['throttle'] = 0.0
             measurements['brake'] = 0.0
-            measurements['rgb'] = np.zeros(3, 300, 200)
+            measurements['rgb'] = np.zeros(3, 200, 300)
 
         return measurements
 
