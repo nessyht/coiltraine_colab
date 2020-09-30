@@ -104,7 +104,7 @@ class CoILDataset(Dataset):
 
             img = cv2.imread(img_path, cv2.IMREAD_COLOR)
             # Apply the image transformation
-            print("Read img from", img_path)
+            print("Read img from", img.shape)
             if self.transform is not None:
                 boost = 1
                 img = self.transform(self.batch_read_number * boost, img)
