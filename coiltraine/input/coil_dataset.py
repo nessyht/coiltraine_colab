@@ -250,7 +250,7 @@ class CoILDataset(Dataset):
 
                 if self.is_measurement_partof_experiment(final_measurement):
                     float_dicts.append(final_measurement)
-                    rgb = 'CentralRGB_' + data_point_number + '.png'
+                    rgb = 'CenterRGB_' + data_point_number + '.png'
                     sensor_data_names.append(os.path.join(episode.split('/')[-1], rgb))
                     count_added_measurements += 1
 
